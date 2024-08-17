@@ -1,6 +1,7 @@
 import inquirer from 'inquirer';
 import fs from 'fs';
 import generateMarkdown from './utils/generateMarkdown.js';             
+import Choices from 'inquirer/lib/objects/choices.js';
 
 // Array of questions for user input
 const questions = [
@@ -37,11 +38,13 @@ const questions = [
         message: 'Provide test instructions:',  
     },
     {
-        type: 'input',
+        type: 'list',
         name: 'license',
         message: 'What license is your project under?',
+        choices: ['MIT', 'Apache 2.0', 'GPL v3', 'BSD 3-Clause', 'None'],
         default: 'MIT'
     },
+
     {
         type: 'input',
         name: 'github',
