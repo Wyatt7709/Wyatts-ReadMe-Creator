@@ -1,85 +1,66 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
 function renderLicenseBadge(license) {
-  if (license) {
-    return '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
-  } else if (license === 'Apache 2.0') {
-    return '[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)';
-  } else if (license === 'GPL v3') {
-    return '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)';
-  } else if (license === 'BSD 3-Clause') {
-    return '[![License: BSD 3-Clause](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)';
-  } else if (license === 'None') {
-    return '';
-  } else {
-    return '';
+  if (license !== 'None') {
+    return `[![License](https://img.shields.io/static/v1?label=License&message=${license}&color=blue&style=plastic)](https://opensource.org/licenses/${license.replace(' ', '-')})`;
   }
+  return '';
 }
 
-// TODO: Create a function that returns the license link
 function renderLicenseLink(license) {
-  if (license) {
-    return '[MIT](https://opensource.org/licenses/MIT)';
-  } else if (license === 'Apache 2.0') {
-    return '[Apache 2.0](https://opensource.org/licenses/Apache-2.0)';
-  } else if (license === 'GPL v3') {
-    return '[GPL v3](https://www.gnu.org/licenses/gpl-3.0)';
-  } else if (license === 'BSD 3-Clause') {
-    return '[BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause)';
-  } else if (license === 'None') {
-    return '';
-  } else {
-  return '';
-}
+  if (license !== 'None') {
+    return `[${license} License](https://opensource.org/licenses/${license.replace(' ', '-')})`;
+  }
+  return 'This project is not licensed.';
 }
 
-// TODO: Create a function that returns the license section of README
-function renderLicenseSection(license) {
-  if (license === '') {
-    return 'This project is licensed under the MIT license.';
-  } else if (license === 'Apache 2.0') {
-    return 'This project is licensed under the Apache 2.0 license.';
-  } else if (license === 'GPL v3') {
-    return 'This project is licensed under the GPL v3 license.';
-  } else if (license === 'BSD 3-Clause') {
-    return 'This project is licensed under the BSD 3-Clause license.';
-  } else if (license === 'None') {
-    return '';
-  } else {
-  return '';
-}
-}
-
-// TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `
-  # ${data.title}
+# ${data.title}
 
-  ## Description
-  ${data.description}
+${renderLicenseBadge(data.license)}
 
-  ## Installation
-  ${data.installation}
+## Table of Contents
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [GitHub](#github)
+- [Contact](#contact)
+- [License](#license)
 
-  ## Usage
-  ${data.usage}
+## Description
+${data.description}
 
-  ## Contributing
-  ${data.contributing}
+## Installation
+To install the necessary dependencies, run the following command:
+\`\`\`bash
+${data.installation}
+\`\`\`
 
-  ## Tests
-  ${data.tests}
+## Usage
+To use the application, run the following command:
+\`\`\`bash
+${data.usage}
+\`\`\`
 
-  ## License
-  ${renderLicenseBadge(data.license)}
+## Contributing
+${data.contributing}
 
-  ${renderLicenseSection(data.license)}
+## Tests
+To run tests, use the following command:
+\`\`\`bash
+${data.tests}
+\`\`\`
 
-  ## Questions
-  If you have any questions, you can reach me at [${data.email}](mailto:${data.email}).
-  You can also find more of my work at [${data.github}](https://github.com/${data.github}).
+## GitHub
+[${data.github}](https://github.com/${data.github})
+
+## Contact
+If you have any questions, feel free to contact me at ${data.email}.
+
+## License
+${renderLicenseLink(data.license)}
 `;
 }
 
 export default generateMarkdown;
-
-
