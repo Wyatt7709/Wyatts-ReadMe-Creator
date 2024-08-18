@@ -16,6 +16,8 @@
 ## Description
 This project is a dynamic ReadMe generator that simplifies the process of creating professional and well-structured README files for GitHub repositories. Users can easily input their project details, and the generator outputs a ready-to-use markdown file
 
+How To Video:  [ReadMe](https://app.screencastify.com/v3/watch/M0sQGtKGQCpXkt4SEHuO)
+
 ## Installation
 To install the necessary dependencies, run the following command:
 ```bash
